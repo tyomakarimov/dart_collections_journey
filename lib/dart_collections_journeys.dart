@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:word_generator/word_generator.dart';
 
 import 'names.dart';
 
@@ -7,6 +8,8 @@ void main() {
   runTask();
   print('------------------- Task 2 -------------------');
   runTask2();
+  print('------------------- Task 3 -------------------');
+  runTask3();
 }
 
 void runTask() {
@@ -53,4 +56,21 @@ void runTask2() {
 
   Set<String> onlyInNames2 = uniqueNames2.difference(uniqueNames1);
   print('Names only in uniqueNames2: $onlyInNames2');
+}
+
+void runTask3() {
+  final wordGenerator = WordGenerator();
+  List<String> nouns = wordGenerator.randomNouns(50);
+
+  Map<String, int> nounsMap = {for (String word in nouns) word: word.length};
+
+  Map<String, int> tempNouns = {};
+
+  nounsMap.forEach((word, length) {
+    if (length % 2 == 0) {
+      tempNouns[word] = length;
+    }
+  });
+
+  print('Words with even length: ${tempNouns.keys.toList()}');
 }
