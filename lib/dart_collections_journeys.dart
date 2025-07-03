@@ -1,7 +1,12 @@
 import 'dart:math';
 
+import 'names.dart';
+
 void main() {
+  print('------------------- Task 1 -------------------');
   runTask();
+  print('------------------- Task 2 -------------------');
+  runTask2();
 }
 
 void runTask() {
@@ -33,4 +38,19 @@ void runTask() {
   }
 
   print('Length of temp list: ${temp.length}');
+}
+
+void runTask2() {
+  Set<String> uniqueNames1 = Set.from(ukrainianNames1);
+
+  Set<String> uniqueNames2 = Set.from(ukrainianNames2);
+
+  Set<String> commonNames = uniqueNames1.intersection(uniqueNames2);
+  print('Number of common names: ${commonNames.length}');
+
+  Set<String> onlyInNames1 = uniqueNames1.difference(uniqueNames2);
+  print('Names only in uniqueNames1: $onlyInNames1');
+
+  Set<String> onlyInNames2 = uniqueNames2.difference(uniqueNames1);
+  print('Names only in uniqueNames2: $onlyInNames2');
 }
